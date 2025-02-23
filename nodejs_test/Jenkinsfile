@@ -1,22 +1,22 @@
 pipeline {
     agent any
     stages {
-        stage('checkout') {
+        stage('checkout') { # checkout code from git
             steps {
                 sh 'git clone ' + env.GIT_URL
             }
         }
-        stage('install') {
+        stage('install') { # install dependencies
             steps {
                 sh 'npm install'
             }
         }
-        stage('test') {
+        stage('test') { # run tests
             steps {
                 sh 'npm test'
             }
         }
-        stage('build') {
+        stage('build') { # build the project
             steps {
                 sh 'npm run build'
             }
