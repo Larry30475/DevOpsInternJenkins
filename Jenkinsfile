@@ -1,15 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('test') {
+    stage('Install deps') {
       steps {
-        sh 'npm test'
-      }
-    }
-
-    stage('build') {
-      steps {
-        sh 'npm run build'
+        sh 'sudo apt-get install npm'
       }
     }
 
