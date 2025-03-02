@@ -4,22 +4,22 @@ pipeline {
         nodejs 'NodeJS'
     }
     stages {
-        stage('checkout') { # checkout code from git
+        stage('checkout') {
             steps {
                 sh 'git clone ' + env.GIT_URL
             }
         }
-        stage('install') { # install dependencies
+        stage('install') { 
             steps {
                 sh 'npm install'
             }
         }
-        stage('test') { # run tests
+        stage('test') {
             steps {
                 sh 'npm test'
             }
         }
-        stage('build') { # build the project
+        stage('build') {
             steps {
                 sh 'npm run build'
             }
