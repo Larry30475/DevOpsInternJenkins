@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Install deps') {
       steps {
-        sh 'sudo apt-get install npm'
+        sh 'apt-get install npm'
       }
     }
 
