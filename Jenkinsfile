@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Install deps') {
       steps {
-        sh 'apt-get install npm'
+        sh 'brew install npm'
       }
     }
 
