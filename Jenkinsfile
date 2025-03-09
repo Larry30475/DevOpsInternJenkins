@@ -3,9 +3,6 @@ pipeline {
     tools {
         nodejs 'NodeJS'
     }
-    environment {
-        SLACK_WEBHOOK_URL = credentials('slack-webhook')
-    }
     stages {
         stage('checkout') {
             steps {
