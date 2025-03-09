@@ -7,7 +7,7 @@ pipeline {
         stage('checkout') {
             steps {
                 cleanWs()
-                sh 'git clone ' + env.GIT_URL
+                git url: env.GIT_URL
             }
         }
         stage('install') { 
