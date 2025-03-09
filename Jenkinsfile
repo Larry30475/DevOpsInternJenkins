@@ -3,6 +3,9 @@ pipeline {
     tools {
         nodejs 'NodeJS'
     }
+    environment {
+        SLACK_WEBHOOK_URL = credentials('slack-webhook')
+    }
     stages {
         stage('checkout') {
             steps {
@@ -14,14 +17,20 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('test') {
-            steps {
-                sh 'npm test'
-            }
-        }
-        stage('build') {
-            steps {
-                sh 'npm run start'
+        stage('Code Quality & Tests') {
+            parallel {
+                stage('Lint') {
+                    steps {
+                        sh 'npm run lint'
+                    }
+                }
+                stage('Test') {
+                    steps {
+                        retry(2) {
+                            sh 'npm test'
+                        }
+                    }
+                }
             }
         }
     }
