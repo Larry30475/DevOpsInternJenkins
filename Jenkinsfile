@@ -6,7 +6,6 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                cleanWs()
                 git url: env.GIT_URL
             }
         }
